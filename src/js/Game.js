@@ -16,7 +16,7 @@ export default class Game {
 
   showGoblin() {
     setInterval(() => {
-      this.setRandomIdx();
+      this.setRandomIndex();
 
       const currentCell = document.getElementById(`cell${this.currentCellIndex}`);
       const nextCell = document.getElementById(`cell${this.nextCellIndex}`);
@@ -27,7 +27,7 @@ export default class Game {
     }, 1000);
   }
 
-  setRandomIdx() {
+  setRandomIndex() {
     do {
       this.nextCellIndex = Math.floor(Math.random() * this.gameFieldSize);
     } while (this.currentCellIndex === this.nextCellIndex);
@@ -36,7 +36,7 @@ export default class Game {
   // eslint-disable-next-line class-methods-use-this
   generateNewImage() {
     const image = new Image();
-    image.src = 'src/img/goblin.png';
+    image.src = './goblin.png';
     image.classList.add('cell-image');
     return image;
   }
