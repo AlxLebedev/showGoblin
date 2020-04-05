@@ -36,7 +36,7 @@ export default class Game {
   // eslint-disable-next-line class-methods-use-this
   generateNewImage() {
     const image = new Image();
-    image.src = 'src/img/goblin.png';
+    image.src = './img/goblin.png';
     image.classList.add('cell-image');
     return image;
   }

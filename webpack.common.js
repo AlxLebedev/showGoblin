@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -17,6 +18,11 @@ module.exports = {
       filename: './index.html',
       favicon: './src/favicon.ico',
     }),
+    new CopyWebpackPlugin([
+      {
+        from: './src/img/', to: 'img/',
+      }
+    ]),
   ],
   module: {
     rules: [
@@ -33,7 +39,6 @@ module.exports = {
           MiniCssExtractPlugin.loader, 'css-loader',
         ],
       },
-
       {
         test: /\.html$/,
         use: [
@@ -42,6 +47,17 @@ module.exports = {
           },
         ],
       },
+      // {
+      //   test: /\.(png|jpg|gif)$/i,
+      //   use: [
+      //     {
+      //       loader: 'url-loader',
+      //       options: {
+      //         limit: 8192,
+      //       },
+      //     },
+      //   ],
+      // },
       {
         test: /\.(png)$/,
         use: [
@@ -49,7 +65,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               esModule: false,
-              name: '[name].[ext]',
+              name: 'img/[name].[ext]',
             },
           },
         ],
